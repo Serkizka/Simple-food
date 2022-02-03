@@ -1,0 +1,13 @@
+body {
+  font-size: 20px;
+  line-height: 1.5;
+  color: $dark;
+  background-color: $silver-100;
+  @extend %rubik-400;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
