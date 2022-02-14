@@ -4,6 +4,11 @@ body {
   color: $dark;
   background-color: $silver-100;
   @extend %rubik-400;
+  flex-direction: column;
+}
+
+.main {
+  flex-grow: 1;
 }
 
 .container {
@@ -11,3 +16,12 @@ body {
   margin: 0 auto;
   padding: 0 15px;
 }
+
+.title {
+  @extend %rubik-500;
+  font-size: 39px;
+  line-height: 1.2;
+  color: $darkBlue-900;
+  margin-bottom: 60px;
+}
+
