@@ -1,4 +1,9 @@
-html {
+html,
+body {
+  height: 100%;
+}
+
+html{
   box-sizing: border-box;
 }
 
@@ -49,7 +54,6 @@ button {
   display: inline-block;
   appearance: none;
   padding: 0;
-  font: inherit;
   background-color: transparent;
   cursor: pointer;
 }
@@ -67,4 +71,17 @@ select {
 address,
 cite {
   font-style: normal;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
