@@ -1,4 +1,4 @@
 $(function () {
 
 });
-var mixer = mixitup('.popular__cards');
+var mixer = mixitup('.popular-products__cards');

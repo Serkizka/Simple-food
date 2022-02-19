@@ -1,9 +1,30 @@
 body {
   font-size: 20px;
   line-height: 1.5;
-  color: $dark;
+  color: $darkGreen;
   background-color: $silver-100;
   @extend %rubik-400;
+}
+
+.section {
+  padding-bottom: 120px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.wrapper {
+  display: flex;
   flex-direction: column;
 }
 
@@ -18,10 +39,40 @@ body {
 }
 
 .title {
-  @extend %rubik-500;
+  font-weight: 500;
   font-size: 39px;
   line-height: 1.2;
   color: $darkBlue-900;
   margin-bottom: 60px;
 }
 
+.text__animation {
+  &:focus {
+    color: $darkGreen;
+    box-shadow: 0px 0px 0px 2px rgba($accent, 0.7);
+    opacity: 0.7;
+  }
+
+  &:hover {
+    color: $accent;
+  }
+
+  &:active {
+    color: $darkGreen;
+    box-shadow: 0px 0px 0px 2px transparent;
+    text-shadow: 2px 2px 5px rgba($darkGreen, 0.5);
+  }
+}
+
+.mixitup-control-active {
+  background-color: $accent;
+  border-radius: 5px;
+}
+
+.button {
+  background-color: $accent;
+  color: $white;
+  font-size: 14px;
+  line-height: 1.1;
+  border-radius: 6px;
+}
