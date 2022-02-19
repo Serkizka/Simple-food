@@ -4,16 +4,42 @@
 @import 'global';
 
 .header {
-  padding: 55px 0;
+  padding: 57px 0;
 
   &__inner {
     justify-content: space-between;
-    align-items: center;
     display: flex;
   }
+}
 
-  &__content {
+.menu {
+  display: flex;
+  width: 100%;
+
+  &__list {
     display: flex;
+    margin-right: 55px;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 45px;
+    }
+  }
+
+  &__link {
+    font-size: 18px;
+    line-height: 1.2;
+    border-radius: 5px;
+    transition: box-shadow 0.5s, opacity 0.4s, color 0.4s, text-shadow 0.5s;
+
+    &--active {
+      color: $accent;
+    }
+  }
+
+  &__box {
+    margin-left: auto;
   }
 }
 
@@ -21,7 +47,7 @@
   transition: border 0.3s, opacity 0.5s;
 
   &:focus {
-    border: 1px solid $orange;
+    box-shadow: 0px 0px 0px 2px rgba(255, 104, 56, 0.7);
     border-radius: 5px;
   }
 
@@ -30,130 +56,106 @@
   }
 
   &:active {
-    border: none;
     opacity: 0.5;
-  }
-}
-
-.menu {
-  margin-right: 68px;
-
-  &__list {
-    display: flex;
-  }
-
-  &__item:not(:last-child) {
-    margin-right: 45px;
-  }
-
-  &__link {
-    font-size: 18px;
-    line-height: 1.2;
-    border: 2px solid transparent;
-    border-radius: 5px;
-    transition: border 0.5s, opacity 0.4s, color 0.4s, text-shadow 0.5s;
-
-    &:focus {
-      color: $dark;
-      border: 2px solid $orange;
-      opacity: 0.7;
-    }
-
-    &:hover {
-      color: $orange;
-    }
-
-    &:active {
-      color: $dark;
-      border: 2px solid transparent;
-      text-shadow: 2px 2px 5px rgba($dark, 0.5);
-    }
   }
 }
 
 .user-nav {
   display: flex;
-  margin-right: 20px;
-
-  &__item {
-    width: 44px;
-    height: 44px;
-  }
 
   &__link {
-    display: block;
-    border: 2px solid transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
     border-radius: 5px;
-    transition: background-color 0.5s, border 0.5s, filter 0.5s;
+    transition: background-color 0.5s, box-shadow 0.5s, filter 0.5s, stroke 0.5s;
 
     svg {
-      transform: translate(40%, 15%);
       transition: fill 0.5s;
     }
 
     &:focus {
-      background-color: rgba($style-orange, 0.1);
-      border: 2px solid rgba($orange, 0.5);
+      background-color: rgba($accent-2, 0.1);
+      box-shadow: 0 0 0 2px rgba($accent, 0.7);
       filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+      svg ellipse,
+      path {
+        stroke: $darkBlue-900;
+      }
     }
 
     &:hover {
-      background-color: $orange;
+      background-color: $accent;
+
+      svg ellipse,
+      path {
+        stroke: $white;
+      }
     }
 
     &:active {
-      background-color: $light-orange;
-      border: 2px solid transparent;
-      filter: drop-shadow(0 4px 4px transparent);
+      background-color: $orange100;
+      filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.25));
+      box-shadow: none;
+
+      svg ellipse,
+      path {
+        stroke: $darkBlue-900;
+      }
     }
   }
 
-  &__item:not(:last-child) {
-    margin-right: 25px;
+  &__item {
+    &:not(:last-child) {
+      margin-right: 14px;
+    }
   }
 
   &__number {
     position: absolute;
-    width: 14px;
-    height: 14px;
-    transform: translateX(3px);
+    padding: 0 3px;
+    transform: translate(8px, -10px);
     text-align: center;
     font-size: 10px;
+    line-height: 1.2;
     color: $white;
-    background-color: $orange;
-    border-radius: 50%;
+    background-color: $accent;
+    border-radius: 50px;
+
+    &:hover {
+      background-color: $white;
+      color: $accent;
+    }
   }
 }
 
-.top {
-  margin-bottom: 120px;
-
+.hero {
   &__box {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
 
   &__inner {
-    flex-direction: column;
     max-width: 450px;
     width: 100%;
-    margin: 160px 160px 0 0;
   }
 
-  &-title {
+  &__title {
+    display: block;
     margin-bottom: 15px;
     font-size: 66px;
     line-height: 1.3;
     text-transform: uppercase;
-    @extend %rubik-500;
+    font-weight: 500;
+    color: $darkBlue-900;
+  }
 
-    &__first {
-      display: block;
-      color: $darkBlue-900;
-    }
-
-    &__second {
-      color: $orange;
-    }
+  &__subtitle {
+    color: $accent;
   }
 
   &__text {
@@ -168,29 +170,23 @@
     font-size: 18px;
     line-height: 1.3;
     letter-spacing: 0.03em;
-    color: $white;
-    background-color: $orange;
-    border: 2px solid transparent;
-    border-radius: 6px;
     transition: background-color 0.5s, color 0.5s, box-shadow 0.5s;
 
     &:focus {
-      color: $orange;
-      background-color: rgba($style-orange, 0.1);
-      border: 2px solid rgba($orange, 0.7);
+      color: $accent;
+      background-color: rgba($accent-2, 0.1);
+      box-shadow: 0px 0px 0px 2px rgba($accent, 0.7);
     }
 
     &:hover {
-      color: $orange;
+      color: $accent;
       background-color: $white;
-      border: 2px solid rgba($orange, 0.7);
-      box-shadow: 0px 5px 12px rgba($orange, 0.2);
+      box-shadow: 0px 5px 12px rgba($accent, 0.2);
     }
 
     &:active {
-      color: $orange;
-      border: 2px solid transparent;
-      background-color: rgba($style-orange, 0.1);
+      color: $accent;
+      background-color: rgba($accent-2, 0.1);
       box-shadow: 0px 5px 12px transparent;
     }
   }
@@ -199,34 +195,33 @@
     color: $darkBlue-900;
     text-decoration: underline;
     border-radius: 5px;
-    transition: border-radius 0.5s, border 0.5s, text-decoration 0.5s, color 0.5s, text-shadow 0.5s;
+    transition: border-radius 0.5s, box-shadow 0.5s, text-decoration 0.5s, color 0.5s, text-shadow 0.5s;
 
     &:focus {
-      border: 2px solid rgba($orange, 0.7);
+      box-shadow: 0px 0px 0px 2px rgba($accent, 0.7);
       text-decoration: transparent;
     }
 
     &:hover {
-      color: $orange;
-      border: 2px solid transparent;
+      color: $accent;
       text-decoration: transparent;
     }
 
     &:active {
-      color: $dark;
+      color: $darkGreen;
       text-shadow: 2px 2px 5px rgba($darkBlue-900, 0.5);
-      border: 2px solid transparent;
     }
   }
 
-  &__img {
+  &__image {
     max-width: 560px;
+    width: 100%;
     height: 660px;
-    object-fit: cover;
+    @extend %background;
   }
 }
 
-.popular {
+.popular-products {
   text-align: center;
 
   &__nav {
@@ -237,7 +232,7 @@
     grid-template-rows: (70px);
   }
 
-  &__item {
+  &__button {
     display: flex;
     justify-content: center;
     padding: 13px 29px 17px 23px;
@@ -258,17 +253,17 @@
     }
 
     &:focus {
-      border: 2px solid $orange;
+      border: 2px solid $accent;
     }
 
     &:hover {
-      color: $orange;
-      background-color: rgba($style-orange, 0.1);
-      border: 2px solid $orange;
+      color: $accent;
+      background-color: rgba($accent-2, 0.1);
+      border: 2px solid $accent;
 
       & svg {
         path {
-          fill: $orange;
+          fill: $accent;
         }
       }
     }
@@ -276,7 +271,7 @@
     &:active {
       color: $darkBlue-900;
       background-color: transparent;
-      box-shadow: inset 0px -5px 12px rgba($orange, 0.2);
+      box-shadow: inset 0px -5px 12px rgba($accent, 0.2);
       border: 2px solid transparent;
 
       & svg {
@@ -288,82 +283,77 @@
     }
   }
 
-
   &__cards {
     display: grid;
-    margin-bottom: 60px;
     grid-template-columns: repeat(5, 1fr);
-    grid-gap: 27px;
+    grid-gap: 30px;
+    grid-template-rows: 299px;
+    margin-bottom: 60px;
   }
 
   &__card {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    padding: 15px 20px;
+    justify-content: space-between;
+    height: 299px;
+    max-width: 210px;
+    width: 100%;
+    padding: 20px 15px;
     background-color: $white;
     border: 1px solid $silver-200;
     border-radius: 5px;
 
-    &:nth-child(1) {
-      padding-top: 20px;
+
+    &--photo {
+      margin: 0 auto;
     }
-  }
 
-  &__photo {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto;
-  }
+    &--text {
+      font-size: 15px;
+      line-height: 1.2;
+    }
 
-  &__text {
-    margin-bottom: 25px;
-    @extend %rubik-400;
-    font-size: 15px;
-    line-height: 1.2;
-  }
+    &--price {
+      margin: auto;
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.4;
+      color: $darkBlue-900;
+    }
 
-  &__price {
-    margin-bottom: 10px;
-    @extend %rubik-600;
-    font-size: 15px;
-    line-height: 1.4;
-    color: $darkBlue-900;
-  }
+    &--btn {
+      position: relative;
+      padding: 7px 16px;
+      max-width: 101px;
+      transform: translate(-50%, 0);
+      left: 50%;
+    }
 
-  &__btn {
-    margin: 0 auto;
-    padding: 7px 16px;
-    font-size: 14px;
-    line-height: 1.1;
-    background-color: $orange;
-    color: $white;
-    border-radius: 6px;
+    &:hover {
+      border: 1px solid $accent;
+    }
   }
 
   &__more {
     color: $darkBlue-900;
-    border: 2px solid transparent;
     border-radius: 5px;
     text-decoration: underline;
-    transition: border 0.5s, color 0.5s, text-decoration 0.5s, text-shadow 0,5s;
+    transition: border 0.5s, color 0.5s, text-decoration 0.5s, text-shadow 0, 5s;
 
     &:focus {
-      border: 2px solid rgba($style-orange, 0.7);
+      box-shadow: 0px 0px 0px 2px rgba($accent-2, 0.7);
     }
 
     &:hover {
-      color: $orange;
-      border: 2px solid transparent;
+      color: $accent;
       text-decoration: transparent;
     }
 
     &:active {
-      color: $dark;
-      border: 2px solid transparent;
-      text-shadow: 2px 2px 5px rgba($dark, 0.5);
+      color: $darkGreen;
+      text-shadow: 2px 2px 5px rgba($darkGreen, 0.5);
       text-decoration: transparent;
+      box-shadow: none;
     }
   }
 }
@@ -375,49 +365,45 @@
   }
 
   &__form {
-    max-width: 250px;
+    width: 200px;
     margin-right: 20px;
   }
 
-  &-logo__img {
-    margin-bottom: 25px;
+  &__logo {
+    margin-bottom: 30px;
   }
 
   &__input {
-    max-width: 200px;
     width: 100%;
     margin-bottom: 7px;
     padding: 13px 15px;
     font-size: 14px;
     line-height: 1.3;
-    border: 2px solid $gray;
+    color: rgba($gray, 0.9);
+    border: 1px solid $gray;
     border-radius: 5px;
     opacity: 0.9;
-    transition: border 0.5s, color 0,5s;
+    transition: color 0.5s, box-shadow 0.5s;
 
     &:focus {
-      border: 2px solid $orange;
+      box-shadow: 0px 0px 0px 2px $accent;
     }
 
     &:hover {
-      color: $darkBlue-900, 0.9;
-      border: 2px solid $gray;
+      &::placeholder {
+        color: rgba($darkBlue-900, 0.9);
+      }
     }
   }
 
   &__btn {
     display: flex;
     padding: 13px 38px 13px 36px;
-    max-width: 200px;
     width: 100%;
-    @extend %rubik-500;
-    font-size: 14px;
-    line-height: 1.3;
-    color: $white;
-    background-color: $orange;
-    border: 2px solid transparent;
+    font-weight: 500;
+    background-color: $accent;
     border-radius: 5px;
-    transition: color 0.5s, background-color 0.5s, border 0.5s;
+    transition: color 0.5s, background-color 0.5s, box-shadow 0.5s;
 
     & svg {
       margin-right: 15px;
@@ -429,38 +415,42 @@
     }
 
     &:focus {
-      color: $orange;
-      background-color: rgba($style-orange, 0.1);
-      border: 2px solid $orange;
+      color: $accent;
+      background-color: rgba($accent-2, 0.1);
+      box-shadow: 0px 0px 0px 2px rgba($accent, 0.7);
 
       path {
-        fill: $orange;
+        fill: $accent;
       }
     }
 
     &:hover {
-      color: $orange;
+      color: $accent;
       background-color: $white;
-      border: 2px solid $orange;
+      box-shadow: 0px 0px 0px 2px rgba($accent, 0.7);
 
       path {
-        fill: $orange;
+        fill: $accent;
       }
     }
 
     &:active {
-      background-color: $light-orange;
-      border: 2px solid transparent;
+      background-color: $orange100;
     }
   }
 
+  &__box {
+    column-count: 3;
 
-  &__box:not(:last-child) {
-    margin-right: 75px;
+    &:not(:last-child) {
+      margin-right: 75px;
+    }
   }
 
-  &__item:not(:last-child) {
-    margin-bottom: 8px;
+  &__item {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
   }
 
   &__about {
@@ -488,71 +478,59 @@
   }
 
   &__info {
-    position: relative;
     line-height: 2.0;
     font-size: 16px;
     padding-left: 32px;
+    background-size: 19px 19px;
+    background-repeat: no-repeat;
+    background-position: left;
 
-    &::before {
-      position: absolute;
-      content: "";
-      left: 0;
-      bottom: 0;
-      width: 24px;
-      height: 24px;
-      background-size: contain;
-      background-repeat: no-repeat;
-      background-position: center center;
-    }
-
-    &--address::before {
+    &--address {
       background-image: url('../images/icons/map.svg');
     }
 
-    &--phone::before {
+    &--phone {
       background-image: url('../images/icons/phone.svg');
     }
 
-    &--email::before {
+    &--email {
       background-image: url('../images/icons/email.svg');
     }
-
   }
 }
 
 .social {
   display: flex;
-  justify-content: space-between;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 13px;
+    }
+  }
 
   &__link {
-    display: block;
-    width: 19px;
-    height: 19px;
-    padding: 20px 20px;
-    border: 2px solid transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 39px;
+    height: 39px;
     border-radius: 50%;
     background-color: $silver-200;
-    background-position: center center;
-    background-repeat: no-repeat;
-    transition: background-color 0.5s, border 0.5s;
+    transition: background-color 0.5s, bax-shadow 0.5s, fill 0.5s;
 
     & svg {
-      transform: translate(-50%, -50%);
-      transition: fill 0.5s;
-
       path {
-        fill: $dark;
+        fill: $darkGreen;
       }
     }
 
     &:focus {
-      background-color: $light-orange;
-      border: 2px solid $style-orange;
+      background-color: $orange100;
+      box-shadow: 0px 0px 0px 2px rgba(255, 104, 56, 0.7);
     }
 
     &:hover {
-      background-color: $style-orange;
-      border: 2px solid transparent;
+      background-color: $accent-2;
 
       path {
         fill: $white;
@@ -560,15 +538,11 @@
     }
 
     &:active {
-      background-color: $light-orange;
-      border: 2px solid transparent;
+      background-color: $orange100;
 
       path {
-        fill: $orange;
+        fill: $accent;
       }
     }
   }
 }
-
-
-@import 'media';
