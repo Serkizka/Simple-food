@@ -1,0 +1,9 @@
+.best-restaurant {
+  text-align: center;
+
+  &__cards {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -30px -30px 0;
+  }
+}
