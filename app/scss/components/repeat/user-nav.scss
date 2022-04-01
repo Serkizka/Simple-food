@@ -1,0 +1,82 @@
+.user-nav {
+  display: flex;
+
+  &__link {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 5px;
+    transition: background-color 0.5s, box-shadow 0.5s, filter 0.5s, stroke 0.5s;
+
+    svg {
+      transition: stroke 0.5s;
+    }
+
+    span {
+      transition: background-color 0.5s, color 0.5s;
+    }
+
+    &:focus {
+      background-color: rgba($accent-2, 0.1);
+      box-shadow: 0 0 0 2px rgba($accent, 0.7);
+      filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.25));
+
+      svg {
+        stroke: $darkBlue-900;
+      }
+    }
+
+    &:hover {
+      background-color: $accent;
+
+      svg {
+        stroke: $white;
+      }
+
+      span {
+        background-color: $white;
+        color: $accent;
+      }
+    }
+
+    &:active {
+      background-color: $orange100;
+      filter: drop-shadow(0 0 0 rgba(255, 255, 255, 0.25));
+      box-shadow: none;
+
+      svg {
+        stroke: $darkBlue-900;
+      }
+    }
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 14px;
+    }
+  }
+
+  &__btn {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: $darkGreen;
+    stroke-width: 1.5;
+  }
+
+  &__number {
+    position: absolute;    
+    top: 5px;
+    left: 25px;
+    padding: 1px 5px 2px 4px;
+    text-align: center;
+    font-size: 10px;
+    line-height: 1.2;
+    color: $white;
+    background-color: $accent;
+    border-radius: 50px;
+  }
+}
